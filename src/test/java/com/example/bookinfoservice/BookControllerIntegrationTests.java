@@ -66,7 +66,7 @@ public class BookControllerIntegrationTests {
                 .andExpect(jsonPath("$[0].title",is("Book1")))
                 .andExpect(jsonPath("$[0].isbn",is("ISBN1")))
                 .andExpect(jsonPath("$[1].title",is("Book2")))
-                .andExpect(jsonPath("$[1].isbn",is("ISBN1")));
+                .andExpect(jsonPath("$[1].isbn",is("ISBN2")));
     }
 
 }
