@@ -33,7 +33,7 @@ jobs:
         with:
           java-version: 8
 
-      - name: Start MongoDB for integration test
+      - name: Start Mysql for integration test
         uses: mirromutth/mysql-action@v1.1
         with:
           mysql database: 'bookdb_test' # Optional, default value is "test". The specified database which will be create
