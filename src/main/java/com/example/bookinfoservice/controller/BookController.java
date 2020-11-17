@@ -24,5 +24,11 @@ public class BookController {
     public Book getBookByISBN(@PathVariable String ISBN){
         return bookRepository.findBookByISBN(ISBN);
     }
+    
+    @PostMapping("/books")
+    public Review addReview(@RequestBody Book book){
+        reviewRepository.save(book);
+        return book;
+    }
 
 }
