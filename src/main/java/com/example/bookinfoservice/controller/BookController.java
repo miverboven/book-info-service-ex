@@ -3,9 +3,7 @@ package com.example.bookinfoservice.controller;
 import com.example.bookinfoservice.model.Book;
 import com.example.bookinfoservice.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -27,7 +25,7 @@ public class BookController {
     
     @PostMapping("/books")
     public Book addBook(@RequestBody Book book){
-        reviewRepository.save(book);
+        bookRepository.save(book);
         return book;
     }
 
