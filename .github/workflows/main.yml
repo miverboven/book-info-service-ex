@@ -1,4 +1,4 @@
-name: Test, Build and Upload artifact & container
+name: Build, test and deliver container
 
 on:
   push:
@@ -8,7 +8,7 @@ on:
 jobs:
   delivery:
     runs-on: ubuntu-latest
-    name: Java 11 build, test, deliver artifact and container
+    name: Java 11 build, test, deliver container
     steps:
       - name: Check out repository
         uses: actions/checkout@v1
@@ -29,12 +29,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=miverboven_book-info-service-ex
-
-      - name: Upload Maven build artifact
-        uses: actions/upload-artifact@v1
-        with:
-          name: book-info-service-artifact.jar
-          path: ./target/*.jar
 
       - name: Docker login
         run: docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASSWORD }}
