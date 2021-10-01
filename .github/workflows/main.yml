@@ -38,6 +38,11 @@ jobs:
         with:
           mysql database: 'bookdb_test' # Optional, default value is "test". The specified database which will be create
           mysql root password: ${{ secrets.MYSQL_ROOT_PASSWORD }} # Required if "mysql user" is empty, default is empty. The root superuser password
+      
+      - name: Build and analyze
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=miverboven_book-info-service-ex
 
       - name: Test and build project
         run: mvn -f pom.xml clean install
