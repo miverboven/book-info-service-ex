@@ -1,9 +1,6 @@
 name: Build, test and deliver container
 
-on:
-  push:
-    branches:
-      - master
+on: push
 
 jobs:
   delivery:
