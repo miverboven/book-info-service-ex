@@ -1,0 +1,25 @@
+services:
+ mysql:
+  image: mysql:latest
+  ports:
+    - 3306:3306
+  volumes:
+    - mysql_data_container:/var/lib/mysql
+  environment:
+   MYSQL_ROOT_PASSWORD: abc123
+   
+ book-info-service:
+  depends_on:
+    - mysql
+  image: miverboven/book-info-service-ex
+  ports:
+    - 8051:8051
+  links:
+    - mysql
+  environment:
+   MYSQL_DB_USERNAME: root
+   MYSQL_DB_PASSWORD: abc123
+   MYSQL_DB_HOST: mysql
+
+volumes:
+ mysql_data_container:
